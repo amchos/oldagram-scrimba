@@ -31,12 +31,9 @@ const posts = [
 const postEl = document.querySelector('.post-wrapper')
 
 
-
-console.log(posts.length)
-
 function postRender(post, toWhere) {
     for(let i = 0; i < post.length; i++) {
-        toWhere.innerHTML += `            
+        toWhere.innerHTML += ` 
                 <div class="post">
                     <div class="post-user">
                         <div class="post-user-img">
@@ -52,7 +49,7 @@ function postRender(post, toWhere) {
                     </div>
                     <div class="post-bottom">
                         <div class="post-bottom-btn">
-                            <button>
+                            <button class="add-like">
                                 <img src="images/icon-heart.png" alt="like button image">
                             </button>
 
@@ -64,11 +61,22 @@ function postRender(post, toWhere) {
                                 <img src="images/icon-dm.png" alt="share button image">
                             </button>
                         </div>
-                        <div class="post-bottom-likes-amount"><strong>${post[i].likes}</strong> likes</div>
+                        <div  class="post-bottom-likes-amount"><strong>${post[i].likes}</strong> likes</div>
                         <div class="post-bottom-comment"><strong>${post[i].username}</strong> ${post[i].comment}</div>
                     </div>
                 </div>`
     }
+
+    let likesAmount = document.querySelector('.post-bottom-likes-amount strong')
+    let addLikes = document.querySelectorAll('.add-like')
+
+    addLikes.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            post[index].likes++
+            likesAmount.textContent = post[index].likes
+        })
+    })
+
 }
 
 

@@ -70,5 +70,9 @@ body {
     height: 50px;
 }
 
+button:hover,
+button:active {
+    transform: scale(1.1);
+}
 
 /* POST STYLES END */
